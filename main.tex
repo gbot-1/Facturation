@@ -1,0 +1,54 @@
+\documentclass[a4paper, article, oneside, french, hidelinks, 10pt]{article}
+
+%% Smaller margins
+\usepackage[margin=1in]{geometry}
+
+%% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Fonts and typography
+\usepackage[final]{microtype} % Improved typography
+\usepackage[sfdefault]{ClearSans} % Sans serif font
+
+%% Miscellanous styling
+\pagestyle{empty} % Remove page number
+
+% Invoice
+\usepackage[french]{invoice}
+
+% \usepackage{draftwatermark}
+% \SetWatermarkText{PAYÉ CASH}
+% \SetWatermarkScale{0.5}
+
+\begin{document}
+
+\setname{Guillaume Bottin}
+\setaddress{Rue de Falisolle, 33\\ 5070 Vitrival}{Rue de Falisolle, 33 - 5070 Vitrival}
+\setaccountnumber{BE08 0689 5035 611}
+\setvatnumber{BE1000.531.640}
+\setemail{guillaume.bottin@ir-bucheron.be}
+\setphonenumber{+32 484 21 08 55}
+
+\setourref{24/102}    %%%%%%%%% TO MODIFY
+\setcommunication{24/102 - MATHIEU}   %%%%%% TO MODIFY
+
+\setinvoicedate{11 mai 2024}
+\setdeadline{14}
+
+\setreceivername{Mathieu Raphael}   %%%%%% TO MODIFY
+\setvatclient{BE0741.835.214}   %%%%%% TO MODIFY
+\setreceiveraddress{Rue des Alloux, 14\\ 5060 Tamines}   %%%%%% TO MODIFY
+\setyourref{}   %%%%%% TO MODIFY
+
+
+\additem{Main d'oeuvre}{175.00 \EUR}{0}{175.00 \EUR}   %%%%%% TO MODIFY
+
+
+\setsubtotal{175.00}   %%%%%% TO MODIFY
+\setvatandwarning{0}   %%%%%% TO MODIFY
+\settotal{175.00 \EUR}   %%%%%% TO MODIFY
+
+\makeinvoice
+
+\end{document}
