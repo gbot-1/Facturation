@@ -169,15 +169,15 @@
 \newcommand{\setvatandwarning}[1]{
     \def \INV@content@vatrate {#1}
     \ifnum #1=0
-        \def \INV@content@vat {0.00 \EUR}
+        % \def \INV@content@vat {0.00 \EUR}
         \def \INV@text@warning@french {\INV@text@warningZERO@french}
         \def \INV@text@vattype@french {\INV@text@vattypeZERO@french}
     \else\ifnum #1=6
-        \def \INV@content@vat {6\%}
+        % \def \INV@content@vat {XX \EUR}
         \def \INV@text@warning@french {\INV@text@warningREDUCED@french}
         \def \INV@text@vattype@french {\INV@text@vattypeREDUCED@french}
     \else\ifnum #1=21
-        \def \INV@content@vat {21\%}
+        % \def \INV@content@vat {21.69 \EUR}
         \def \INV@text@warning@french {}
         \def \INV@text@vattype@french {\INV@text@vattypeFULL@french}
     \fi\fi\fi
@@ -227,9 +227,9 @@
 	\hfill
 	\renewcommand{\arraystretch}{1}
 	\begin{tabular}{r r}
-		\csname INV@text@subtotal@\INV@lang\endcsname: \hspace{10pt} & \INV@content@subtotal \\
-		\csname INV@text@vattype@\INV@lang \endcsname: \hspace{10pt} & \INV@content@vat \\ 
-		{\Large \csname INV@text@total@\INV@lang\endcsname: \hspace{10pt}} & {\Large \INV@content@total}
+		\csname INV@text@subtotal@\INV@lang\endcsname: \hspace{10pt} & \INV@content@subtotal\ \EUR \\
+		\csname INV@text@vattype@\INV@lang \endcsname: \hspace{10pt} & \INV@content@vat\ \EUR\\ 
+		{\Large \csname INV@text@total@\INV@lang\endcsname: \hspace{10pt}} & {\Large \INV@content@total\ \EUR}
 	\end{tabular}
 	
 	\vfill
