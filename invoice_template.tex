@@ -1,0 +1,55 @@
+\documentclass[a4paper, oneside, french, hidelinks, 10pt]{article}
+
+%% Smaller margins
+\usepackage[margin=1in]{geometry}
+
+%% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Fonts and typography
+\usepackage[final]{microtype} % Improved typography
+\usepackage[sfdefault]{ClearSans} % Sans serif font
+
+%% Miscellanous styling
+\pagestyle{empty} % Remove page number
+
+% Invoice
+\usepackage[french]{invoice}
+
+% \usepackage{draftwatermark}
+% \SetWatermarkText{PAYÉ CASH}
+% \SetWatermarkScale{0.5}
+
+\begin{document}
+
+\setname{Guillaume Bottin}
+\setaddress{Rue de Falisolle, 33\\ 5070 Vitrival}{Rue de Falisolle, 33 - 5070 Vitrival}
+\setaccountnumber{BE08 0689 5035 611}
+\setvatnumber{BE1000.531.640}
+\setemail{guillaume.bottin@ir-bucheron.be}
+\setphonenumber{+32 484 21 08 55}
+
+\setourref{{{ Ref_invoice }}}    %%%%%%%%% TO MODIFY
+\setcommunication{{{ Communication }}}   %%%%%% TO MODIFY
+
+\setinvoicedate{ {{ Date }}}
+\setdeadline{{{ Deadline }}}
+
+\setreceivername{{{ Client_name }}}   %%%%%% TO MODIFY
+\setvatclient{{{ Client_VAT }}}   %%%%%% TO MODIFY
+\setreceiveraddress{{{ Client_adress }}}   %%%%%% TO MODIFY
+\setyourref{}   %%%%%% TO MODIFY
+
+\setvatandwarning{{{ VAT }}}   %%%%%% TO MODIFY
+
+\additem{{{ Description }}}{{{ Price_HVAT }}}{{{ VAT }}}{{{ Price }}}   %%%%%% TO MODIFY
+
+
+\setsubtotal{{{ Total_HVAT }}}   %%%%%% TO MODIFY
+\setvat{{{ Total_VAT }}}   %%%%%% TO MODIFY
+\settotal{{{ Total }}}   %%%%%% TO MODIFY
+
+\makeinvoice
+
+\end{document}
