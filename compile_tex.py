@@ -55,3 +55,23 @@ def move_and_rename_file(src_folder, dest_folder, src_filename, dest_filename):
     # Move and rename the file
     shutil.move(src_file_path, dest_file_path)
     print(f"File moved and renamed from {src_file_path} to {dest_file_path}")
+
+def generate_main_latex(template_path, output_path, data_dict):
+    # Read the template
+    try:
+        with open(template_path, 'r', encoding='utf-8') as file:
+            template_content = file.read()
+    except Exception as e:
+        print(f"Error reading template: {e}")
+        return
+
+    # Replace placeholders with actual data
+    for key, value in data_dict.items():
+        placeholder = f'{{{{ {key} }}}}'  # Correct placeholder format
+        template_content = template_content.replace(placeholder, str(value))
+    # Write the output to a new file
+    try:
+        with open(output_path, 'w', encoding='utf-8') as file:
+            file.write(template_content)
+    except Exception as e:
+        print(f"Error writing to output file: {e}")
