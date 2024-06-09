@@ -17,9 +17,18 @@
 % Invoice
 \usepackage[french]{invoice}
 
-% \usepackage{draftwatermark}
-% \SetWatermarkText{PAYÉ CASH}
-% \SetWatermarkScale{0.5}
+\usepackage{draftwatermark}
+
+%% Define a boolean flag for the watermark
+\usepackage{ifthen}
+\newboolean{watermark}
+\setboolean{watermark}{true} % Set to true to display the watermark, false otherwise
+
+%% Conditional watermark
+\ifthenelse{\boolean{watermark}}{
+  \SetWatermarkText{PAYÉ CASH}
+  \SetWatermarkScale{0.5}
+}{}
 
 \begin{document}
 
@@ -30,25 +39,25 @@
 \setemail{guillaume.bottin@ir-bucheron.be}
 \setphonenumber{+32 484 21 08 55}
 
-\setourref{24203}    %%%%%%%%% TO MODIFY
-\setcommunication{24203 - MATHIEU}   %%%%%% TO MODIFY
+\setourref{24104}    %%%%%%%%% TO MODIFY
+\setcommunication{24104 - ANGELO}   %%%%%% TO MODIFY
 
-\setinvoicedate{ 28 aoÃ»t 2024}
-\setdeadline{100}
+\setinvoicedate{ 08 juin 2024}
+\setdeadline{12}
 
-\setreceivername{Raphael Mathieu}   %%%%%% TO MODIFY
-\setvatclient{BE0741.635.214}   %%%%%% TO MODIFY
-\setreceiveraddress{Rue des Alloux, 14\\ 5060 Auvelais}   %%%%%% TO MODIFY
+\setreceivername{Angelo}   %%%%%% TO MODIFY
+% \setvatclient{BE0741.635.214}   %%%%%% TO MODIFY
+\setreceiveraddress{Rue Trianoy, 8b\\6040 Jumet}   %%%%%% TO MODIFY
 \setyourref{}   %%%%%% TO MODIFY
 
-\setvatandwarning{21}   %%%%%% TO MODIFY
+\setvatandwarning{6}   %%%%%% TO MODIFY
 
-\additem{Tonde et élagage où nöel ô de pelouse}{165.29}{21}{200}   %%%%%% TO MODIFY
+\additem{Elagage du saule}{47.17}{6}{50.00}   %%%%%% TO MODIFY
 
 
-\setsubtotal{165.29}   %%%%%% TO MODIFY
-\setvat{34.71}   %%%%%% TO MODIFY
-\settotal{200}   %%%%%% TO MODIFY
+\setsubtotal{47.17}   %%%%%% TO MODIFY
+\setvat{2.83}   %%%%%% TO MODIFY
+\settotal{50.00}   %%%%%% TO MODIFY
 
 \makeinvoice
 

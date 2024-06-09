@@ -1,8 +1,10 @@
 """ TO DO """
 """
 add bool cash or not
+add bool VAT
 Fix encoding month UTF-8
 DB client
+option to add multiple items
 """
 
 from compile_tex import*
@@ -12,28 +14,37 @@ import datetime
 
 SRC_FOLDER = 'C:/Users/Win/OneDrive/Documents/Ir_Bucheron/Code_Facturation'
 MAIN_FOLDER = 'C:/Users/Win/OneDrive/Documents/Ir_Bucheron/Facturation'
-
-DATE = '28/08/2024'
 YEAR = str(datetime.datetime.now().year)
-CLIENT_NAME = "Raphael Mathieu"
+
+DATE = '08/06/2024'
+CLIENT_NAME = "Angelo"
 CLIENT_VAT = "BE0741.635.214"
-CLIENT_ADDRESS = "Rue des Alloux, 14\\\\ 5060 Auvelais"
-VAT = 21
-DESCRIPTION = "Tonde et élagage où nöel ô de pelouse"
-PRICE = 200
+CLIENT_ADDRESS = "Rue Trianoy, 8b\\\\6040 Jumet"
+VAT = 6
+DESCRIPTION = "Elagage du saule"
+PRICE = 50.00
+REF = None
+BOOL_CASH = 1
 
 def create_folder(folder_path):
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
+
+def str_bool_cash(BOOL_CASH):
+    if BOOL_CASH: 
+        return "true"
+    else:
+        return "false"
 
 quadri = determine_quadrimester(DATE)
 
 dest_folder = os.path.join(MAIN_FOLDER, YEAR, quadri)
 create_folder(dest_folder)
 
-ref, communication = generate_ref_and_communication(dest_folder, CLIENT_NAME, DATE)
+ref, communication = generate_ref_and_communication(dest_folder, CLIENT_NAME, DATE, REF)
 
 invoice_data = {
+    "Cash_payement" : str_bool_cash(BOOL_CASH),
     "Ref_invoice": ref,                             #automatic fill
     "Communication": communication,                 #automatic fill
     "Date": convert_date_to_text(DATE),
@@ -44,10 +55,10 @@ invoice_data = {
     "VAT": VAT,
     "Description": DESCRIPTION,
     "Price_HVAT": round(PRICE/(1+VAT/100),2),       #automatic fill
-    "Price": PRICE,                 
+    "Price": f"{PRICE:.2f}",                 
     "Total_HVAT": round(PRICE/(1+VAT/100),2),       #automatic fill
     "Total_VAT": round(PRICE-PRICE/(1+VAT/100),2),  #automatic fill
-    "Total": PRICE                                  #automatic fill
+    "Total": f"{PRICE:.2f}"                         #automatic fill
 }
 
 generate_main_latex('invoice_template.tex', 'invoice.tex', invoice_data)

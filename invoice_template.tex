@@ -17,9 +17,18 @@
 % Invoice
 \usepackage[french]{invoice}
 
-% \usepackage{draftwatermark}
-% \SetWatermarkText{PAYÉ CASH}
-% \SetWatermarkScale{0.5}
+\usepackage{draftwatermark}
+
+%% Define a boolean flag for the watermark
+\usepackage{ifthen}
+\newboolean{watermark}
+\setboolean{watermark}{{{ Cash_payement }}} % Set to true to display the watermark, false otherwise
+
+%% Conditional watermark
+\ifthenelse{\boolean{watermark}}{
+  \SetWatermarkText{PAYÉ CASH}
+  \SetWatermarkScale{0.5}
+}{}
 
 \begin{document}
 
@@ -37,7 +46,7 @@
 \setdeadline{{{ Deadline }}}
 
 \setreceivername{{{ Client_name }}}   %%%%%% TO MODIFY
-\setvatclient{{{ Client_VAT }}}   %%%%%% TO MODIFY
+% \setvatclient{{{ Client_VAT }}}   %%%%%% TO MODIFY
 \setreceiveraddress{{{ Client_address }}}   %%%%%% TO MODIFY
 \setyourref{}   %%%%%% TO MODIFY
 
