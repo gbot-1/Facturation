@@ -1,16 +1,15 @@
 from datetime import datetime, timedelta
-import locale
+import babel.dates
 
 # Set locale to French
-locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+# locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
 
 def convert_date_to_text(date_str):
-    """
-    Convert a date string in the format "DD/MM/YYYY" to "DD month YYYY" in French.
-    """
-    date_obj = datetime.strptime(date_str, "%d/%m/%Y")
-    print(date_obj.strftime("%B"))
-    return date_obj.strftime("%d %B %Y")
+    date_object = datetime.strptime(date_str, '%d/%m/%Y')
+
+    # Format date to '08 août 2024'
+    formatted_date = babel.dates.format_date(date_object, format='d MMMM yyyy', locale='fr')
+    return formatted_date
 
 def compute_days_difference(date_str):
     """

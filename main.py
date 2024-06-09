@@ -14,7 +14,7 @@ SRC_FOLDER = 'C:/Users/Win/OneDrive/Documents/Ir_Bucheron/Code_Facturation'
 MAIN_FOLDER = 'C:/Users/Win/OneDrive/Documents/Ir_Bucheron/Facturation'
 YEAR = str(datetime.datetime.now().year)
 
-DATE = '08/06/2024'
+DATE = '08/08/2024'
 CLIENT_NAME = "Angelo"
 CLIENT_VAT = "BE0741.835.214"
 BOOL_CLIENT_VAT = 0
@@ -42,6 +42,8 @@ dest_folder = os.path.join(MAIN_FOLDER, YEAR, quadri)
 create_folder(dest_folder)
 
 ref, communication = generate_ref_and_communication(dest_folder, CLIENT_NAME, DATE, REF)
+
+print(convert_date_to_text(DATE))
 
 invoice_data = {
     "Cash_payement" : str_bool(BOOL_CASH),
