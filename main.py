@@ -1,7 +1,5 @@
 """ TO DO """
 """
-add bool cash or not
-add bool VAT
 Fix encoding month UTF-8
 DB client
 option to add multiple items
@@ -18,20 +16,22 @@ YEAR = str(datetime.datetime.now().year)
 
 DATE = '08/06/2024'
 CLIENT_NAME = "Angelo"
-CLIENT_VAT = "BE0741.635.214"
+CLIENT_VAT = "BE0741.835.214"
+BOOL_CLIENT_VAT = 0
 CLIENT_ADDRESS = "Rue Trianoy, 8b\\\\6040 Jumet"
 VAT = 6
 DESCRIPTION = "Elagage du saule"
 PRICE = 50.00
-REF = None
 BOOL_CASH = 1
+
+REF = None
 
 def create_folder(folder_path):
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
 
-def str_bool_cash(BOOL_CASH):
-    if BOOL_CASH: 
+def str_bool(Bool):
+    if Bool: 
         return "true"
     else:
         return "false"
@@ -44,12 +44,13 @@ create_folder(dest_folder)
 ref, communication = generate_ref_and_communication(dest_folder, CLIENT_NAME, DATE, REF)
 
 invoice_data = {
-    "Cash_payement" : str_bool_cash(BOOL_CASH),
+    "Cash_payement" : str_bool(BOOL_CASH),
     "Ref_invoice": ref,                             #automatic fill
     "Communication": communication,                 #automatic fill
     "Date": convert_date_to_text(DATE),
     "Deadline": compute_days_difference(DATE),      #automatic fill
     "Client_name": CLIENT_NAME,
+    "Bool_VAT_client": str_bool(BOOL_CLIENT_VAT),
     "Client_VAT": CLIENT_VAT,
     "Client_address": CLIENT_ADDRESS,
     "VAT": VAT,

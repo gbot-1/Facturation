@@ -24,6 +24,9 @@
 \newboolean{watermark}
 \setboolean{watermark}{{{ Cash_payement }}} % Set to true to display the watermark, false otherwise
 
+\newboolean{Bool_VAT_client}
+\setboolean{Bool_VAT_client}{{{ Bool_VAT_client }}} % Set to true to display the client VAT, false otherwise
+
 %% Conditional watermark
 \ifthenelse{\boolean{watermark}}{
   \SetWatermarkText{PAYÉ CASH}
@@ -46,7 +49,9 @@
 \setdeadline{{{ Deadline }}}
 
 \setreceivername{{{ Client_name }}}   %%%%%% TO MODIFY
-% \setvatclient{{{ Client_VAT }}}   %%%%%% TO MODIFY
+\ifthenelse{\boolean{Bool_VAT_client}}{
+    \setvatclient{{{ Client_VAT }}}
+}{}
 \setreceiveraddress{{{ Client_address }}}   %%%%%% TO MODIFY
 \setyourref{}   %%%%%% TO MODIFY
 
