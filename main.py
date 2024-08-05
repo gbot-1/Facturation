@@ -1,30 +1,39 @@
 """ TO DO """
 """
-Fix encoding month UTF-8
-DB client
 option to add multiple items
 """
+
+
+
+
+
+DATE = '03/08/2024'
+VAT = 0
+DESCRIPTION = "Nivellement du terrain à Tamines"
+PRICE = 300.00
+BOOL_CASH = 0
+
+REF = 24206
+
+
+
+
+
 
 from compile_tex import*
 from date_manipulation import*
 from ref_and_communication import*
+from db_manipulation import*
 import datetime
+import config
 
 SRC_FOLDER = 'C:/Users/Win/OneDrive/Documents/Ir_Bucheron/Code_Facturation'
 MAIN_FOLDER = 'C:/Users/Win/OneDrive/Documents/Ir_Bucheron/Facturation'
 YEAR = str(datetime.datetime.now().year)
 
-DATE = '08/08/2024'
-CLIENT_NAME = "Angelo"
-CLIENT_VAT = "BE0741.835.214"
-BOOL_CLIENT_VAT = 0
-CLIENT_ADDRESS = "Rue Trianoy, 8b\\\\6040 Jumet"
-VAT = 6
-DESCRIPTION = "Elagage du saule"
-PRICE = 50.00
-BOOL_CASH = 1
-
-REF = None
+input_str = input("Client à facturer : ")
+client = check_string_and_execute(input_str)
+set_client_variables(client)
 
 def create_folder(folder_path):
     if not os.path.exists(folder_path):
@@ -41,7 +50,9 @@ quadri = determine_quadrimester(DATE)
 dest_folder = os.path.join(MAIN_FOLDER, YEAR, quadri)
 create_folder(dest_folder)
 
-ref, communication = generate_ref_and_communication(dest_folder, CLIENT_NAME, DATE, REF)
+print(config.CLIENT_NAME)
+
+ref, communication = generate_ref_and_communication(dest_folder, config.CLIENT_NAME, DATE, REF)
 
 print(convert_date_to_text(DATE))
 
@@ -51,10 +62,10 @@ invoice_data = {
     "Communication": communication,                 #automatic fill
     "Date": convert_date_to_text(DATE),
     "Deadline": compute_days_difference(DATE),      #automatic fill
-    "Client_name": CLIENT_NAME,
-    "Bool_VAT_client": str_bool(BOOL_CLIENT_VAT),
-    "Client_VAT": CLIENT_VAT,
-    "Client_address": CLIENT_ADDRESS,
+    "Client_name": config.CLIENT_NAME,
+    "Bool_VAT_client": str_bool(config.BOOL_CLIENT_VAT),
+    "Client_VAT": config.CLIENT_VAT,
+    "Client_address": config.CLIENT_ADDRESS,
     "VAT": VAT,
     "Description": DESCRIPTION,
     "Price_HVAT": round(PRICE/(1+VAT/100),2),       #automatic fill

@@ -17,8 +17,6 @@
 % Invoice
 \usepackage[french]{invoice}
 
-\usepackage{draftwatermark}
-
 %% Define a boolean flag for the watermark
 \usepackage{ifthen}
 \newboolean{watermark}
@@ -29,6 +27,7 @@
 
 %% Conditional watermark
 \ifthenelse{\boolean{watermark}}{
+  \usepackage{draftwatermark}
   \SetWatermarkText{PAYÉ CASH}
   \SetWatermarkScale{0.5}
 }{}
@@ -37,7 +36,7 @@
 
 \setname{Guillaume Bottin}
 \setaddress{Rue de Falisolle, 33\\ 5070 Vitrival}{Rue de Falisolle, 33 - 5070 Vitrival}
-\setaccountnumber{BE08 0689 5035 611}
+\setaccountnumber{BE08 0689 5035 6113}
 \setvatnumber{BE1000.531.640}
 \setemail{guillaume.bottin@ir-bucheron.be}
 \setphonenumber{+32 484 21 08 55}

@@ -1,0 +1,5 @@
+#Global variable
+CLIENT_NAME = ""
+CLIENT_VAT = ""
+BOOL_CLIENT_VAT = ""
+CLIENT_ADDRESS = ""
