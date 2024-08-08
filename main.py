@@ -1,5 +1,6 @@
 """ TO DO """
 """
+db avec chaque facture et somme par client (surtout 0%)
 option to add multiple items
 """
 
@@ -7,13 +8,13 @@ option to add multiple items
 
 
 
-DATE = '03/08/2024'
-VAT = 0
-DESCRIPTION = "Nivellement du terrain à Tamines"
-PRICE = 300.00
-BOOL_CASH = 0
+DATE = '09/08/2024'
+VAT = 21
+DESCRIPTION = "XXXXXXXXXXXXXX"
+PRICE = 0000000.00
+BOOL_CASH = 1
 
-REF = 24206
+REF = 24208
 
 
 
@@ -50,11 +51,9 @@ quadri = determine_quadrimester(DATE)
 dest_folder = os.path.join(MAIN_FOLDER, YEAR, quadri)
 create_folder(dest_folder)
 
-print(config.CLIENT_NAME)
-
 ref, communication = generate_ref_and_communication(dest_folder, config.CLIENT_NAME, DATE, REF)
 
-print(convert_date_to_text(DATE))
+# print(convert_date_to_text(DATE))
 
 invoice_data = {
     "Cash_payement" : str_bool(BOOL_CASH),
@@ -63,7 +62,7 @@ invoice_data = {
     "Date": convert_date_to_text(DATE),
     "Deadline": compute_days_difference(DATE),      #automatic fill
     "Client_name": config.CLIENT_NAME,
-    "Bool_VAT_client": str_bool(config.BOOL_CLIENT_VAT),
+    "Bool_VAT_client": str_bool(int(config.BOOL_CLIENT_VAT)),
     "Client_VAT": config.CLIENT_VAT,
     "Client_address": config.CLIENT_ADDRESS,
     "VAT": VAT,
