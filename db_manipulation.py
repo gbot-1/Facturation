@@ -10,7 +10,7 @@ def manual_input_new_client():
         "town": input("Code postal et localité du client : ")
     }
 
-    client_info["vat_bool"] = int(0) if isinstance(client_info["vat_number"], bool) else 1
+    client_info["vat_bool"] = 0 if isinstance(client_info["vat_number"], str) else 1
  
     new_client = add_client(**client_info)
     return new_client

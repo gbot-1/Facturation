@@ -8,13 +8,13 @@ option to add multiple items
 
 
 
-DATE = '09/08/2024'
-VAT = 21
-DESCRIPTION = "XXXXXXXXXXXXXX"
-PRICE = 0000000.00
-BOOL_CASH = 1
+DATE = '16/10/2024'
+VAT = 6
+DESCRIPTION = "Abattage des peupliers"
+PRICE = 1200.00
+BOOL_CASH = 0
 
-REF = 24208
+REF = None
 
 
 
